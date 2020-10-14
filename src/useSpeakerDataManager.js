@@ -4,10 +4,17 @@ import { speakersReducer } from './speakersReducer';
 //import SpeakerData from './SpeakerData';
 
 function useSpeakerDataManager () {
-  const [{ isLoading, speakerList }, dispatch] = useReducer(speakersReducer, {
+  const [{ isLoading, speakerList, favoriteClickCount }, dispatch] = useReducer(speakersReducer, {
     isLoading: true,
     speakerList: [],
+    favoriteClickCount: 10,
   });
+
+  function incrementFavoriteClickCount() {
+    dispatch({
+      type: 'incrementFavoriteClickCount',
+    });
+  }
 
   function toggleSpeakerFavorite(speakerRec) {
     const updateData = async function() {
@@ -32,6 +39,7 @@ function useSpeakerDataManager () {
     //   });
     // });
     const fetchData = async function() {
+      console.log('fetch Data..');
       let result = await axios.get('http://localhost:4000/speakers');
       dispatch({type: 'setSpeakerList', data: result.data})
     }
@@ -40,7 +48,13 @@ function useSpeakerDataManager () {
       console.log('cleanup');
     };
   }, []); // [speakingSunday, speakingSaturday]);
-  return { isLoading, speakerList, toggleSpeakerFavorite };
+  return {
+    isLoading,
+    speakerList,
+    favoriteClickCount,
+    incrementFavoriteClickCount,
+    toggleSpeakerFavorite
+  };
 }
 
 export default useSpeakerDataManager;
