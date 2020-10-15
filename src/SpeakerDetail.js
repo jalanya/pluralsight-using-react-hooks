@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import ImageToggleOnScroll from './ImageToggleOnScroll';
-import { GlobalContext } from './GlobalState';
+import { FavoriteClickCountContext } from './FavoriteClickCountContext';
 
 const SpeakerDetail = React.memo(({
   speakerRec,
@@ -15,7 +15,7 @@ const SpeakerDetail = React.memo(({
   } = speakerRec;
   console.log(`SpeakerDetail:${id} ${firstName} ${lastName} ${favorite}`);
 
-  const { incrementFavoriteClickCount } = useContext(GlobalContext);
+  const { incrementFavoriteClickCount } = useContext(FavoriteClickCountContext);
 
   return (
     <div className="card col-4 cardmin">

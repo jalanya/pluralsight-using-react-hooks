@@ -7,7 +7,7 @@ function useSpeakerDataManager () {
   const [{ isLoading, speakerList, favoriteClickCount }, dispatch] = useReducer(speakersReducer, {
     isLoading: true,
     speakerList: [],
-    favoriteClickCount: 10,
+    favoriteClickCount: 0,
   });
 
   function incrementFavoriteClickCount() {
