@@ -10,7 +10,9 @@ export const GlobalProvider = ({children}) => {
     speakerList,
     favoriteClickCount,
     toggleSpeakerFavorite,
-    incrementFavoriteClickCount
+    incrementFavoriteClickCount,
+    hasErrored,
+    error
   } = useSpeakerDataManager();
 
   const provider = {
@@ -18,7 +20,9 @@ export const GlobalProvider = ({children}) => {
     speakerList,
     favoriteClickCount,
     toggleSpeakerFavorite,
-    incrementFavoriteClickCount
+    incrementFavoriteClickCount,
+    hasErrored,
+    error
   };
 
   return (

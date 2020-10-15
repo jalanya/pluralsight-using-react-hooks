@@ -13,7 +13,9 @@ const Speakers = ({}) => {
   const {
     isLoading,
     speakerList,
-    toggleSpeakerFavorite
+    toggleSpeakerFavorite,
+    hasErrored,
+    error
   } = useContext(GlobalContext);
   
   const handleChangeSaturday = () => {
@@ -56,6 +58,8 @@ const Speakers = ({}) => {
     // );
     //console.log("changing session favorte to " + favoriteValue);
   }, []);
+
+  if (hasErrored === true) return <div>Error: {error.message}</div>;
 
   if (isLoading) return <div>Loading...</div>;
 
